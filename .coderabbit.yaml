@@ -1,0 +1,55 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: "zh"
+tone_instructions: "Use concise Traditional Chinese. Be direct, evidence-based, and practical."
+early_access: false
+focus: "high"
+
+reviews:
+  profile: "assertive"
+  request_changes_workflow: true
+  high_level_summary: true
+  high_level_summary_in_walkthrough: true
+  review_status: true
+  review_details: true
+  poem: false
+  auto_review:
+    enabled: true
+    drafts: false
+  instructions: |
+    Review as a strict code quality gatekeeper.
+
+    Prioritize findings in this order:
+    1. Security vulnerabilities, authorization bypasses, secret exposure, injection, unsafe deserialization, SSRF, XSS, CSRF, and sensitive data leakage.
+    2. Correctness bugs, data loss, race conditions, broken error handling, invalid edge cases, and backwards-incompatible behavior.
+    3. Missing or weak tests for changed high-risk paths.
+    4. Performance regressions with user-visible or operational impact.
+    5. Maintainability issues only when they increase real risk or make the code materially harder to evolve.
+
+    Do not comment on purely subjective style preferences. Avoid asking for broad refactors unless the current change introduces concrete risk.
+
+    Every finding should include:
+    - The specific risk.
+    - Why the changed code can trigger it.
+    - A practical fix or safer alternative.
+
+    Use priority labels:
+    - P0: production outage, data loss, critical security issue.
+    - P1: clear bug, high-risk regression, exploitable security weakness.
+    - P2: moderate risk, important missing tests, maintainability issue with concrete impact.
+    - P3: minor improvement.
+
+    If no blocking issues are found, say that clearly and mention any residual test gap.
+
+chat:
+  auto_reply: true
+  art: false
+
+knowledge_base:
+  code_guidelines:
+    enabled: true
+    filePatterns:
+      - "review-guidelines.md"
+      - "review-checklist.md"
+      - "project-profiles/*.md"
+      - ".github/copilot-instructions.md"
+      - "AGENTS.md"

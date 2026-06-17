@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: "zh"
+focus: "high"
+
+reviews:
+  profile: "assertive"
+  request_changes_workflow: true
+  high_level_summary: true
+  review_status: true
+  poem: false
+  auto_review:
+    enabled: true
+    drafts: false
+  instructions: |
+    Use the central review philosophy from the organization's coderabbit repository.
+    In this repository, prioritize security, correctness, and missing tests over style.
+
+chat:
+  auto_reply: true
+  art: false
